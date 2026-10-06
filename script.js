@@ -18,7 +18,7 @@ const revealElements = document.querySelectorAll(
     ".section, .project-card, .service-card, .stats div, .cta"
 );
 
-const revealOnScroll = () => {
+function revealOnScroll() {
 
     revealElements.forEach((element) => {
 
@@ -31,10 +31,9 @@ const revealOnScroll = () => {
 
     });
 
-};
+}
 
 window.addEventListener("scroll", revealOnScroll);
-
 revealOnScroll();
 
 
@@ -42,9 +41,7 @@ revealOnScroll();
 // BUTTON CLICK EFFECT
 // ===============================
 
-const buttons = document.querySelectorAll(".btn");
-
-buttons.forEach((button) => {
+document.querySelectorAll(".btn").forEach((button) => {
 
     button.addEventListener("click", () => {
 
@@ -63,16 +60,11 @@ buttons.forEach((button) => {
 // PORTFOLIO CARD CLICK
 // ===============================
 
-const projects =
-    document.querySelectorAll(".project-card");
-
-projects.forEach((project) => {
+document.querySelectorAll(".project-card").forEach((project) => {
 
     project.addEventListener("click", () => {
 
-        alert(
-            "Demo Project — Video preview will be added here."
-        );
+        alert("Demo Project — Video preview will be added here.");
 
     });
 
@@ -83,37 +75,59 @@ projects.forEach((project) => {
 // NAVBAR SCROLL EFFECT
 // ===============================
 
-const navbar =
-    document.querySelector(".navbar");
+const navbar = document.querySelector(".navbar");
 
-window.addEventListener("scroll", () => {
+if (navbar) {
 
-    if (window.scrollY > 50) {
+    window.addEventListener("scroll", () => {
 
-        navbar.style.background =
-            "rgba(5, 5, 5, 0.95)";
+        if (window.scrollY > 50) {
 
-    } else {
+            navbar.style.background =
+                "rgba(5, 5, 5, 0.95)";
 
-        navbar.style.background =
-            "rgba(5, 5, 5, 0.82)";
+        } else {
 
-    }
+            navbar.style.background =
+                "rgba(5, 5, 5, 0.82)";
 
-});
+        }
+
+    });
+
+}
+
+
+// ===============================
+// MOBILE MENU
+// ===============================
 
 const menuBtn = document.getElementById("menu-btn");
 const navMenu = document.getElementById("nav-menu");
 
-menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("active");
-    navMenu.classList.toggle("active");
-});
+if (menuBtn && navMenu) {
 
-// Close menu after clicking a link
-document.querySelectorAll("#nav-menu a").forEach(link => {
-    link.addEventListener("click", () => {
-        menuBtn.classList.remove("active");
-        navMenu.classList.remove("active");
+    menuBtn.addEventListener("click", function () {
+
+        menuBtn.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
     });
-});
+
+
+    // Close menu after clicking a link
+
+    const navLinks = navMenu.querySelectorAll("a");
+
+    navLinks.forEach((link) => {
+
+        link.addEventListener("click", function () {
+
+            menuBtn.classList.remove("active");
+            navMenu.classList.remove("active");
+
+        });
+
+    });
+
+}
