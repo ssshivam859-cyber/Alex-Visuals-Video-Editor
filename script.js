@@ -101,3 +101,19 @@ window.addEventListener("scroll", () => {
     }
 
 });
+
+const menuBtn = document.getElementById("menu-btn");
+const navMenu = document.getElementById("nav-menu");
+
+menuBtn.addEventListener("click", () => {
+    menuBtn.classList.toggle("active");
+    navMenu.classList.toggle("active");
+});
+
+// Close menu after clicking a link
+document.querySelectorAll("#nav-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+        menuBtn.classList.remove("active");
+        navMenu.classList.remove("active");
+    });
+});
